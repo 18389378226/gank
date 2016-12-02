@@ -8,23 +8,133 @@
 
 
     <RelativeLayout
+        android:background="#f00"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-       >
+        android:layout_height="match_parent">
 
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/ll_topmenu"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_header"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="35dp" />
+
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="80dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="46565456"
+                android:padding="10dp"
+                android:textColor="@android:color/white"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="哈哈哈"
-            android:textSize="30dp" />
+            android:layout_above="@+id/ll_bottommenu"
+            android:layout_below="@+id/ll_topmenu">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_all"
+                    style="@style/MenuStyle"
+                    android:text="@string/all" />
+
+                <TextView
+                    android:id="@+id/tv_fuli"
+                    style="@style/MenuStyle"
+                    android:text="@string/fuli" />
+
+                <TextView
+                    android:id="@+id/tv_android"
+                    style="@style/MenuStyle"
+                    android:text="@string/android" />
+
+                <TextView
+                    android:id="@+id/tv_ios"
+                    style="@style/MenuStyle"
+                    android:text="@string/ios" />
+
+                <TextView
+                    android:id="@+id/tv_video"
+                    style="@style/MenuStyle"
+                    android:text="@string/video" />
+
+                <TextView
+                    android:id="@+id/tv_front"
+                    style="@style/MenuStyle"
+                    android:text="@string/front" />
+
+                <TextView
+                    android:id="@+id/tv_resource"
+                    style="@style/MenuStyle"
+                    android:text="@string/resource" />
+
+                <TextView
+                    android:id="@+id/tv_app"
+                    style="@style/MenuStyle"
+                    android:text="@string/app" />
+
+                <TextView
+                    android:id="@+id/tv_more"
+                    style="@style/MenuStyle"
+                    android:text="@string/more" />
+            </LinearLayout>
+        </ScrollView>
+
+
+        <LinearLayout
+            android:background="#f00"
+            android:id="@+id/ll_bottommenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:padding="12dp"
+                android:text="关于"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:padding="12dp"
+                android:text="主题"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
 
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="#fff"
         android:layout_height="match_parent"
+        android:background="#fff"
         android:orientation="vertical">
 
         <include layout="@layout/layout_title" />
@@ -32,8 +142,7 @@
         <FrameLayout
             android:id="@+id/rl_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

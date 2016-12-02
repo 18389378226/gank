@@ -5,8 +5,11 @@ import android.util.Log;
 
 import com.chensen.gank.bean.GanHuoBean;
 import com.chensen.gank.bean.HttpResponse;
+import com.chensen.gank.common.http.MySubscriber;
 import com.chensen.gank.common.http.RetrofitHelper;
 import com.chensen.gank.mvp.contact.AllContact;
+import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 
@@ -16,7 +19,7 @@ import rx.schedulers.Schedulers;
 
 /**
  * author：chensen on 2016/11/30 15:54
- * desc：
+ * desc：全部
  */
 
 public class AllPresenter implements AllContact.Presenter {
@@ -36,7 +39,7 @@ public class AllPresenter implements AllContact.Presenter {
                 .getAll(size, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<HttpResponse>() {
+                .subscribe(new MySubscriber<HttpResponse>() {
                     @Override
                     public void onCompleted() {
 
@@ -52,6 +55,7 @@ public class AllPresenter implements AllContact.Presenter {
 
                     @Override
                     public void onNext(HttpResponse httpResponse) {
+                        super.onNext(httpResponse);
                         if (mView != null) {
                             if (!httpResponse.isError()) {
                                 if (httpResponse.getResults() != null && httpResponse.getResults().size() > 0) {
@@ -78,7 +82,7 @@ public class AllPresenter implements AllContact.Presenter {
                 .getAll(size, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<HttpResponse>() {
+                .subscribe(new MySubscriber<HttpResponse>() {
                     @Override
                     public void onCompleted() {
 
@@ -94,6 +98,7 @@ public class AllPresenter implements AllContact.Presenter {
 
                     @Override
                     public void onNext(HttpResponse httpResponse) {
+                        super.onNext(httpResponse);
                         if (mView != null) {
                             mView.showMoreData(httpResponse.getResults());
                         }
