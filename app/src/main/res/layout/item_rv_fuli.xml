@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:cardCornerRadius="5dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
-    android:background="#fff"
-    android:orientation="vertical"
-    app:cardCornerRadius="5dp"
-    app:cardElevation="6dp">
+    app:cardElevation="10dp">
 
 
     <ImageView
         android:id="@+id/iv_pic"
-        android:background="#eeeeee"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="match_parent"
+        android:padding="3dp"
         android:scaleType="centerCrop" />
 
 

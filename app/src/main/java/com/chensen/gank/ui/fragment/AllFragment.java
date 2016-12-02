@@ -2,9 +2,11 @@ package com.chensen.gank.ui.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.MenuCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,12 +26,16 @@ import com.chensen.gank.common.base.BaseFragment;
 import com.chensen.gank.common.utils.ScreenUtil;
 import com.chensen.gank.mvp.contact.AllContact;
 import com.chensen.gank.mvp.presenter.AllPresenter;
+import com.chensen.gank.ui.CustomWebViewActivity;
+import com.chensen.gank.ui.PicActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static android.os.Build.VERSION_CODES.M;
 
 /**
  * author：chensen on 2016/11/30 15:43
@@ -86,6 +92,16 @@ public class AllFragment extends BaseFragment implements AllContact.View {
         mAdapterAll.setOnItemClickListener(new AdapterAll.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                if (mData.get(position).getType().equals("福利")) {
+                    Intent intent = new Intent(mContext, PicActivity.class);
+                    intent.putExtra("url", mData.get(position).getUrl());
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(mContext, CustomWebViewActivity.class);
+                    intent.putExtra("url", mData.get(position).getUrl());
+                    intent.putExtra("title", mData.get(position).getType());
+                    startActivity(intent);
+                }
 
             }
         });

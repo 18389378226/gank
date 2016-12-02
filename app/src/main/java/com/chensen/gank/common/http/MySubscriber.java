@@ -11,7 +11,7 @@ import rx.Subscriber;
  * desc：
  */
 
-public class MySubscriber<T> extends Subscriber<T> {
+public abstract  class MySubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onCompleted() {

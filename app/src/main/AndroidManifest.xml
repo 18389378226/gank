@@ -3,9 +3,6 @@
     package="com.chensen.gank">
 
 
-
-
-
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".MyApplication"
@@ -21,6 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.PicActivity"/>
+        <activity android:name=".ui.CustomWebViewActivity"/>
     </application>
 
 </manifest>

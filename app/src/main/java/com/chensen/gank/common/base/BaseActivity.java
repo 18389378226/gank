@@ -2,9 +2,12 @@ package com.chensen.gank.common.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.chensen.gank.R;
 
@@ -48,5 +51,24 @@ public abstract class BaseActivity extends AppCompatActivity {
                 activity.finish();
             }
         }
+    }
+
+
+    public void setToolBar(Toolbar toolBar, String title) {
+        toolBar.setTitle(title);
+        setSupportActionBar(toolBar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    finishAfterTransition();
+                } else {
+                    finish();
+                }
+            }
+        });
+
     }
 }

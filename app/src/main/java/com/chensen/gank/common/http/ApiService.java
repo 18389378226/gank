@@ -21,5 +21,11 @@ public interface ApiService {
     @GET("data/all/{size}/{page}")
     Observable<HttpResponse> getAll(@Path("size") int size, @Path("page") int page);
 
+    /**
+     * 福利
+     */
+    @GET("data/福利/{size}/{page}")
+    Observable<HttpResponse> getFuli(@Path("size") int size, @Path("page") int page);
+
 
 }

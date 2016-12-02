@@ -43,7 +43,7 @@ public class RetrofitHelper {
 
 
     /**
-     * 获取妹子列表
+     * 获取所有干货列表
      */
     public Observable<HttpResponse> getAll(int size, int page) {
         if (apiService == null) {
@@ -52,5 +52,13 @@ public class RetrofitHelper {
         return apiService.getAll(size, page);
     }
 
-
+    /**
+     * 获取福利列表
+     */
+    public Observable<HttpResponse> getFuli(int size, int page) {
+        if (apiService == null) {
+            new RetrofitHelper();
+        }
+        return apiService.getFuli(size, page);
+    }
 }
