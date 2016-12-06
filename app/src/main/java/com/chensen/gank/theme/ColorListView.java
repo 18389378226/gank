@@ -9,9 +9,6 @@ import android.view.View;
 import android.widget.ListView;
 
 
-/**
- * Created by chengli on 15/6/8.
- */
 public class ColorListView extends ListView implements ColorUiInterface {
 
     private int attr_background = -1;

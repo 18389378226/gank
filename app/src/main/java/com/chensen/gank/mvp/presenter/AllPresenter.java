@@ -1,19 +1,10 @@
 package com.chensen.gank.mvp.presenter;
 
-import android.support.v4.view.PagerAdapter;
-import android.util.Log;
-
-import com.chensen.gank.bean.GanHuoBean;
 import com.chensen.gank.bean.HttpResponse;
 import com.chensen.gank.common.http.MySubscriber;
 import com.chensen.gank.common.http.RetrofitHelper;
-import com.chensen.gank.mvp.contact.AllContact;
-import com.google.gson.Gson;
-import com.orhanobut.logger.Logger;
+import com.chensen.gank.mvp.contact.CommonContact;
 
-import java.util.ArrayList;
-
-import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -22,18 +13,18 @@ import rx.schedulers.Schedulers;
  * desc：全部
  */
 
-public class AllPresenter implements AllContact.Presenter {
-    private AllContact.View mView;
+public class AllPresenter implements CommonContact.Presenter {
+    private CommonContact.View mView;
 
     private int page = 1;
     private int size = 20;
 
-    public AllPresenter(AllContact.View mView) {
+    public AllPresenter(CommonContact.View mView) {
         this.mView = mView;
     }
 
     @Override
-    public void getAll() {
+    public void getData() {
         page = 1;
         RetrofitHelper.getInstance()
                 .getAll(size, page)
@@ -76,7 +67,7 @@ public class AllPresenter implements AllContact.Presenter {
     }
 
     @Override
-    public void getAllMore() {
+    public void getMoreData() {
         page++;
         RetrofitHelper.getInstance()
                 .getAll(size, page)

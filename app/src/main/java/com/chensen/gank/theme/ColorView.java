@@ -6,9 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 
-/**
- * Created by chengli on 15/6/8.
- */
+
 public class ColorView extends View implements ColorUiInterface {
 
     private int attr_background = -1;

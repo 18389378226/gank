@@ -9,9 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-/**
- * Created by chengli on 15/6/8.
- */
+
 public class ViewAttributeUtil {
 
     public static int getAttributeValue(AttributeSet attr, int paramInt) {

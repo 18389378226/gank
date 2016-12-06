@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * desc：
  */
 
-public class AdapterAll extends RecyclerView.Adapter {
+public class AdapterCommon extends RecyclerView.Adapter {
     private Context mContext;
     private ArrayList<GanHuoBean> mData;
     private RecyclerView mRecyclerView;
@@ -37,7 +37,7 @@ public class AdapterAll extends RecyclerView.Adapter {
     private OnLoadMoreListener mLoadMoreListener;
 
 
-    public AdapterAll(Context mContext, ArrayList<GanHuoBean> mData, RecyclerView mRecyclerView) {
+    public AdapterCommon(Context mContext, ArrayList<GanHuoBean> mData, RecyclerView mRecyclerView) {
         this.mContext = mContext;
         this.mData = mData;
         this.mRecyclerView = mRecyclerView;
@@ -52,7 +52,7 @@ public class AdapterAll extends RecyclerView.Adapter {
                 LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
                 final int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
                 int itemCount = layoutManager.getItemCount();
-                if (lastVisibleItemPosition == itemCount-1 && !isLoading && dy > 0) {
+                if (lastVisibleItemPosition == itemCount - 1 && !isLoading && dy > 0) {
                     isLoading = true;
                     if (mLoadMoreListener != null) {
                         mLoadMoreListener.onLoadMore();
@@ -119,6 +119,14 @@ public class AdapterAll extends RecyclerView.Adapter {
                     }
                 }
             });
+        } else if (holder instanceof LoadViewHolder) {
+            if (getItemCount() == 1) {
+                holder.itemView.setVisibility(View.INVISIBLE);
+            } else {
+                holder.itemView.setVisibility(View.VISIBLE);
+
+            }
+
         }
 
     }

@@ -4,6 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.chensen.gank.theme.ColorView
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:background="?attr/colorPrimary"
+        android:layout_height="20dp" />
     <include layout="@layout/toolbar_layout" />
 
 

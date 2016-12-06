@@ -1,5 +1,7 @@
 package com.chensen.gank.ui;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,6 +14,9 @@ import android.widget.ProgressBar;
 
 import com.chensen.gank.R;
 import com.chensen.gank.common.base.BaseActivity;
+import com.chensen.gank.common.utils.SharedPreferencesUtils;
+import com.chensen.gank.common.utils.SystemUtils;
+import com.chensen.gank.theme.ColorView;
 
 import butterknife.BindView;
 
@@ -21,7 +26,8 @@ import butterknife.BindView;
  */
 
 public class CustomWebViewActivity extends BaseActivity {
-
+    @BindView(R.id.status_bar)
+    ColorView mStatusBar;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.progressbar)
@@ -32,6 +38,7 @@ public class CustomWebViewActivity extends BaseActivity {
     private String url;
     private String title;
 
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_webview;
@@ -39,6 +46,18 @@ public class CustomWebViewActivity extends BaseActivity {
 
     @Override
     protected void init() {
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mStatusBar.setVisibility(View.VISIBLE);
+            mStatusBar.getLayoutParams().height = SystemUtils.getStatusHeight(this) + 2;
+            mStatusBar.setLayoutParams(mStatusBar.getLayoutParams());
+        } else {
+            mStatusBar.setVisibility(View.GONE);
+        }
+        toolbar.setBackgroundColor(Color.parseColor(SharedPreferencesUtils.getString(mContext, "themeColor", "#3F51B5")));
+        mStatusBar.setBackgroundColor(Color.parseColor(SharedPreferencesUtils.getString(mContext, "themeColor", "#3F51B5")));
+
         url = getIntent().getStringExtra("url");
         title = getIntent().getStringExtra("title");
 

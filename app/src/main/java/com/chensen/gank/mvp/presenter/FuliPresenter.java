@@ -90,7 +90,7 @@ public class FuliPresenter implements FuliContact.Presenter {
                     public void onNext(HttpResponse httpResponse) {
                         super.onNext(httpResponse);
                         if (!httpResponse.isError()) {
-                            mView.showData(httpResponse.getResults());
+                            mView.showMoreData(httpResponse.getResults());
                         } else {
                             mView.showFail("获取数据失败");
                         }

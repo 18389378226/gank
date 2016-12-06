@@ -3,28 +3,25 @@ package com.chensen.gank.ui.fragment;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.MenuCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.chensen.gank.MyApplication;
 import com.chensen.gank.R;
-import com.chensen.gank.adapter.AdapterAll;
+import com.chensen.gank.adapter.AdapterCommon;
 import com.chensen.gank.bean.GanHuoBean;
 import com.chensen.gank.common.SpaceItemDecoration;
 import com.chensen.gank.common.base.BaseFragment;
 import com.chensen.gank.common.utils.ScreenUtil;
-import com.chensen.gank.mvp.contact.AllContact;
+import com.chensen.gank.mvp.contact.CommonContact;
 import com.chensen.gank.mvp.presenter.AllPresenter;
 import com.chensen.gank.ui.CustomWebViewActivity;
 import com.chensen.gank.ui.PicActivity;
@@ -33,16 +30,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-
-import static android.os.Build.VERSION_CODES.M;
 
 /**
  * author：chensen on 2016/11/30 15:43
  * desc：
  */
 @SuppressLint("ValidFragment")
-public class AllFragment extends BaseFragment implements AllContact.View {
+public class AllFragment extends BaseFragment implements CommonContact.View {
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
     @BindView(R.id.swipeRefreshLayout)
@@ -52,7 +46,7 @@ public class AllFragment extends BaseFragment implements AllContact.View {
 
     private AllPresenter mPresenter;
 
-    private AdapterAll mAdapterAll;
+    private AdapterCommon mAdapterAll;
     private ArrayList<GanHuoBean> mData = new ArrayList<>();
 
 
@@ -63,19 +57,20 @@ public class AllFragment extends BaseFragment implements AllContact.View {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_all;
+        return R.layout.fragment_common;
     }
 
     @Override
     protected void init() {
         mPresenter = new AllPresenter(this);
-        mPresenter.getAll();
+        mPresenter.getData();
 
+        swipeRefreshLayout.setRefreshing(true);
         swipeRefreshLayout.setColorSchemeColors(Color.RED, Color.GREEN, Color.BLUE);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mPresenter.getAll();
+                mPresenter.getData();
             }
         });
 
@@ -86,10 +81,10 @@ public class AllFragment extends BaseFragment implements AllContact.View {
         recyclerview.addItemDecoration(itemDecoration);
         recyclerview.setItemAnimator(new DefaultItemAnimator());
 
-        mAdapterAll = new AdapterAll(MyApplication.getInstance(), mData, recyclerview);
+        mAdapterAll = new AdapterCommon(MyApplication.getInstance(), mData, recyclerview);
         recyclerview.setAdapter(mAdapterAll);
 
-        mAdapterAll.setOnItemClickListener(new AdapterAll.OnItemClickListener() {
+        mAdapterAll.setOnItemClickListener(new AdapterCommon.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 if (mData.get(position).getType().equals("福利")) {
@@ -106,10 +101,10 @@ public class AllFragment extends BaseFragment implements AllContact.View {
             }
         });
 
-        mAdapterAll.setOnLoadMoreListener(new AdapterAll.OnLoadMoreListener() {
+        mAdapterAll.setOnLoadMoreListener(new AdapterCommon.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
-                mPresenter.getAllMore();
+                mPresenter.getMoreData();
             }
         });
 
@@ -120,6 +115,11 @@ public class AllFragment extends BaseFragment implements AllContact.View {
             }
         });
 
+    }
+
+    @Override
+    public void setTheme(int color) {
+        floatActionBtn.setBackgroundTintList(ColorStateList.valueOf(color));
     }
 
 

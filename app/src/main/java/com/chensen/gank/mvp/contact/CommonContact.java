@@ -11,7 +11,7 @@ import java.util.List;
  * desc： 某一天的数据
  */
 
-public class AllContact {
+public class CommonContact {
 
     public interface View extends BaseView {
         void showData(List<GanHuoBean> data);
@@ -20,9 +20,9 @@ public class AllContact {
     }
 
     public interface Presenter extends BasePresenter {
-        void getAll();
+        void getData();
 
-        void getAllMore();
+        void getMoreData();
 
     }
 }

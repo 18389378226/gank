@@ -5,12 +5,6 @@
     android:background="#fff"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:text="88888888"
-        android:textSize="40dp"
-        android:layout_height="match_parent" />
-
 
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -35,6 +29,7 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="30dp"
         android:src="@drawable/icon_up"
+        android:background="?attr/colorPrimary"
         app:elevation="6dp" />
 
 </FrameLayout>

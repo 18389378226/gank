@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import com.chensen.gank.common.utils.SharedPreferencesUtils;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
 
@@ -25,7 +26,7 @@ public class MyApplication extends Application {
                 .hideThreadInfo()
                 .logLevel(BuildConfig.DEBUG ? LogLevel.FULL : LogLevel.NONE);
 
-
+        SharedPreferencesUtils.putString(instance,"themeColor","#2196f3");
     }
 
     public static Context getInstance() {

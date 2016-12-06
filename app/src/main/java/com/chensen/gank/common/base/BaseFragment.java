@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
-
 /**
  * author：chensen on 2016/11/30 14:15
  * desc：
@@ -38,4 +36,5 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract int getLayoutId();
     protected  abstract  void init();
+    public    abstract  void setTheme(int color);
 }

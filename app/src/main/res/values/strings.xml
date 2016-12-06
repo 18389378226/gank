@@ -16,4 +16,5 @@
     <string name="app">App</string>
     <string name="about">关于我</string>
     <string name="more">瞎推荐</string>
+    <string name="about_me"> \n陈 森：安卓开发程序猿\n\nGithub：<a href="https://github.com/18389378226">https://github.com/18389378226</a> </string>
 </resources>

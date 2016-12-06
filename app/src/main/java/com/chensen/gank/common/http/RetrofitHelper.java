@@ -61,4 +61,75 @@ public class RetrofitHelper {
         }
         return apiService.getFuli(size, page);
     }
+
+    /**
+     * 获取Android列表
+     */
+    public Observable<HttpResponse> getAndroid(int size, int page) {
+        if (apiService == null) {
+            new RetrofitHelper();
+        }
+        return apiService.getAndroid(size, page);
+    }
+
+    /**
+     * 获取ios列表
+     */
+    public Observable<HttpResponse> getIos(int size, int page) {
+        if (apiService == null) {
+            new RetrofitHelper();
+        }
+        return apiService.getIos(size, page);
+    }
+
+    /**
+     * 获取休息视频列表
+     */
+    public Observable<HttpResponse> getVideo(int size, int page) {
+        if (apiService == null) {
+            new RetrofitHelper();
+        }
+        return apiService.getVieo(size, page);
+    }
+
+    /**
+     * 获取前端列表
+     */
+    public Observable<HttpResponse> getFront(int size, int page) {
+        if (apiService == null) {
+            new RetrofitHelper();
+        }
+        return apiService.getFront(size, page);
+    }
+
+    /**
+     * 获取拓展资源列表
+     */
+    public Observable<HttpResponse> getResource(int size, int page) {
+        if (apiService == null) {
+            new RetrofitHelper();
+        }
+        return apiService.getResource(size, page);
+    }
+
+    /**
+     * 获取App列表
+     */
+    public Observable<HttpResponse> getApp(int size, int page) {
+        if (apiService == null) {
+            new RetrofitHelper();
+        }
+        return apiService.getApp(size, page);
+    }
+
+    /**
+     * 获取App列表
+     */
+    public Observable<HttpResponse> getRecommend(int size, int page) {
+        if (apiService == null) {
+            new RetrofitHelper();
+        }
+        return apiService.getRecommend(size, page);
+    }
+
 }

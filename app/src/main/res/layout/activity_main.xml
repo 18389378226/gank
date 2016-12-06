@@ -7,9 +7,10 @@
     tools:context="com.chensen.gank.ui.MainActivity">
 
 
-    <RelativeLayout
-        android:background="#f00"
+    <com.chensen.gank.theme.ColorRelativeLayout
         android:layout_width="match_parent"
+        android:id="@+id/menu"
+        android:background="?attr/menuBackground"
         android:layout_height="match_parent">
 
 
@@ -100,7 +101,6 @@
 
 
         <LinearLayout
-            android:background="#f00"
             android:id="@+id/ll_bottommenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -129,13 +129,19 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
-    </RelativeLayout>
+    </com.chensen.gank.theme.ColorRelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#fff"
         android:orientation="vertical">
+        
+        <com.chensen.gank.theme.ColorView
+            android:id="@+id/status_bar"
+            android:layout_width="match_parent"
+            android:background="?attr/colorPrimary"
+            android:layout_height="20dp" />
 
         <include layout="@layout/layout_title" />
 

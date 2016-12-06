@@ -10,9 +10,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 
-/**
- * Created by chengli on 15/6/10.
- */
 public class ColorUiUtil {
     /**
      * 切换应用主题
